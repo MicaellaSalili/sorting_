@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Algorithm App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Sorting Algorithm App</h1>
+
+        <form action="{{ url_for('sort') }}" method="post" class="sort-form">
+            <label for="array">Enter comma-separated numbers:</label>
+            <input type="text" name="array" id="array" required>
+
+            <label for="search_type">Select Sorting Algorithm:</label>
+            <select name="search_type" id="search_type" required>
+                <option value="merge_sort">Merge Sort</option>
+                <option value="bubble_sort">Bubble Sort</option>
+                <option value="selection_sort">Selection Sort</option>
+                <option value="insertion_sort">Insertion Sort</option>
+                <option value="quick_sort">Quick Sort</option>
+            </select>
+
+            <button type="submit">Sort</button>
+        </form>
+
+        {% if sorted_output %}
+            <div class="result">
+                <h2>Sorted Output:</h2>
+                <p>{{ sorted_output }}</p>
+
+                <h2>Input Data:</h2>
+                <p>{{ test_data }}</p>
+
+                <h2>Execution Time:</h2>
+                <p>{{ execution_time }} milliseconds</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
